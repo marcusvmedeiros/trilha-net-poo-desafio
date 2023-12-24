@@ -1,10 +1,6 @@
-# DIO - Trilha .NET - Programação orientada a objetos
-www.dio.me
+# Resolução do desafio DIO - POO
 
-## Desafio de projeto
-Para este desafio, você precisará usar seus conhecimentos adquiridos no módulo de orientação a objetos, da trilha .NET da DIO.
-
-## Contexto
+## Contexto do desafio
 Você é responsável por modelar um sistema que trabalha com celulares. Para isso, foi solicitado que você faça uma abstração de um celular e disponibilize maneiras de diferentes marcas e modelos terem seu próprio comportamento, possibilitando um maior reuso de código e usando a orientação a objetos.
 
 ## Proposta
@@ -18,5 +14,54 @@ Você deve criar as suas classes de acordo com o diagrama abaixo:
 2. A classe **Nokia** e **Iphone** devem ser classes filhas de Smartphone.
 3. O método **InstalarAplicativo** deve ser sobrescrito na classe Nokia e iPhone, pois ambos possuem diferentes maneiras de instalar um aplicativo.
 
-## Solução
-O código está pela metade, e você deverá dar continuidade obedecendo as regras descritas acima, para que no final, tenhamos um programa funcional. Procure pela palavra comentada "TODO" no código, em seguida, implemente conforme as regras acima.
+# Alterações e soluções:
+## Solução da classes Iphone e Nokia:
+Para a solução da classe Iphone, foi feito o seguinte:
+- Adicionar o ": Smartphone" para realizar a herança da classe Smartphone
+- Implementar o método construtor herdando da classeSmartphone utilizando o "base()"
+- Sobrescrever o método "InstalarAplicativo"
+
+```
+    public class Iphone : Smartphone
+    {
+        public Iphone(string numero, string modelo, string imei, int memoria) : base(numero, modelo, imei, memoria)
+        {
+
+        }
+        public override void InstalarAplicativo(string NomeApp)
+        {
+            Console.WriteLine($"Instalando o aplicativo \"{NomeApp}\" no Iphone");
+        }
+    }
+
+```
+
+```
+    public class Nokia : Smartphone
+    {
+        public Nokia(string numero, string modelo, string imei, int memoria) : base(numero, modelo, imei, memoria)
+        {
+
+        }
+        public override void InstalarAplicativo(string NomeApp)
+        {
+            Console.WriteLine($"Instalando o aplicativo \"{NomeApp}\" no Nokia");
+        }
+    }
+```
+
+## Fazendo o teste na classe "Program.cs":
+
+```
+Console.WriteLine("Smartphone Nokia:");
+Smartphone nokia = new Nokia("123456", "tipo 1", "11111111", 128);
+nokia.Ligar();
+nokia.InstalarAplicativo("Whatsapp");
+
+Console.WriteLine("\n");
+
+Console.WriteLine("Smartphone Iphone:");
+Smartphone iphone = new Iphone("999999", "15 Pro Max", "22222222", 512);
+iphone.Ligar();
+iphone.InstalarAplicativo("Telegram");
+```
